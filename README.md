@@ -1,6 +1,7 @@
 # JCalculator
 
-A simple calculator written in the Java programming language. For now it does the operations within the console.
+Calculator written in the Java programming language to perform mathematical calculations. Has a GUI now for a better user experience.
 
 # TODO:
-* add GUI so the user can click on buttons to do the operations
+* add key listeners for a better user experience
+* add a programming calculator to perform operations typical for programmers, such as working with binaries, octals and hexa numbers.
