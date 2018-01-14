@@ -12,7 +12,7 @@ public class Main {
   public static void main(String[] args) {
 		JMenuBar menuBar;
 		JMenu menu;
-		JMenuItem simpleView, scientificView, programmingView, about;
+		JMenuItem simpleView, scientificView, about;
 
 	  	// Creating objects of type Class to be able to use the methods within them
 		SimpleCalculator simpleCalculator = new SimpleCalculator();
