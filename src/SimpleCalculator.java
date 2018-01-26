@@ -11,27 +11,45 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class SimpleCalculator extends JFrame {
+	// Declaration of a personal serialVersioUID not to have errors in the
+	// future
 	private static final long serialVersionUID = 128609292020710218L;
+	// Declaration of the buttons
 	private JButton zero, one, two, three, four, five, six, seven, eight, nine,
 			dot, plus, minus, multiply, divide, equal, clear;
+	// Declaration of the text area/screen
 	private JTextArea text;
+	// Declaration of a panel which holds our buttons and shows them on the
+	// frame
 	private JPanel panel;
+	// Declaration and creation of a custom size
+	Dimension dim = new Dimension(75, 25);
+	// Variabile to store the operation we do (needed for equal mostly)
 	private char op;
+	// Strings that hold the result, and the next introduced number
 	private String result = "", nextNum = "";
-	boolean hasDot = false, isStillEmpty = true;
+	// Booleans to check if our "number" has a dot already or not to avoid
+	// repetition and another one to check if our strings are still empty or not
+	private boolean hasDot = false, isStillEmpty = true;
 
+	// Class constructor
 	public SimpleCalculator() {
 		initUI();
 	}
 
+	// Private method which initializes the user interface
 	private void initUI() {
 
+		// Frame title and resizability modifiers
 		setTitle("JCalculator");
 		setResizable(false);
+		// Creation of the JPanel with a flow layout
 		panel = new JPanel(new FlowLayout());
 
-		// 1 line, up to a total of 21 characters
+		// Text area: 1 line, up to a total of 21 characters
 		text = new JTextArea(2, 21);
+		// Creating the buttons with the appropriate text to suggest what it
+		// does upon pressing
 		zero = new JButton("0");
 		one = new JButton("1");
 		two = new JButton("2");
@@ -50,24 +68,26 @@ public class SimpleCalculator extends JFrame {
 		equal = new JButton("=");
 		clear = new JButton("CE");
 
-		one.setPreferredSize(new Dimension(75, 25));
-		two.setPreferredSize(new Dimension(75, 25));
-		three.setPreferredSize(new Dimension(75, 25));
-		four.setPreferredSize(new Dimension(75, 25));
-		five.setPreferredSize(new Dimension(75, 25));
-		six.setPreferredSize(new Dimension(75, 25));
-		seven.setPreferredSize(new Dimension(75, 25));
-		eight.setPreferredSize(new Dimension(75, 25));
-		nine.setPreferredSize(new Dimension(75, 25));
-		zero.setPreferredSize(new Dimension(75, 25));
-		dot.setPreferredSize(new Dimension(75, 25));
-		plus.setPreferredSize(new Dimension(75, 25));
-		minus.setPreferredSize(new Dimension(75, 25));
-		multiply.setPreferredSize(new Dimension(75, 25));
-		divide.setPreferredSize(new Dimension(75, 25));
-		equal.setPreferredSize(new Dimension(75, 25));
+		// Adding dimensions to the buttons to resize them
+		one.setPreferredSize(dim);
+		two.setPreferredSize(dim);
+		three.setPreferredSize(dim);
+		four.setPreferredSize(dim);
+		five.setPreferredSize(dim);
+		six.setPreferredSize(dim);
+		seven.setPreferredSize(dim);
+		eight.setPreferredSize(dim);
+		nine.setPreferredSize(dim);
+		zero.setPreferredSize(dim);
+		dot.setPreferredSize(dim);
+		plus.setPreferredSize(dim);
+		minus.setPreferredSize(dim);
+		multiply.setPreferredSize(dim);
+		divide.setPreferredSize(dim);
+		equal.setPreferredSize(dim);
 		clear.setPreferredSize(new Dimension(150, 25));
 
+		// Adding the elements to the panel
 		panel.add(text);
 		panel.add(clear);
 		panel.add(equal);
@@ -87,19 +107,33 @@ public class SimpleCalculator extends JFrame {
 		panel.add(multiply);
 		panel.add(divide);
 
+		// adding the panel to the frame
 		add(panel);
-		//width, height
-		setSize(250, 400);
+		// Further details of the frame: size, location, and default close
+		// operation
+		// width, height
+		setSize(250, 275);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
+		// Action listeners so that our buttons have some functionality once
+		// they are pressed/clicked!
+
+		/*
+		 * Logic of the numerical numbers: 0: if the text isn't 0, it adds a 0
+		 * character to the string, otherwise it doesn't do anything not to
+		 * repeat it Other numbers: checks if number is 0 so it replaces it
+		 * (because we don't work with cell/phone numbers here), otherwise it
+		 * adds it to the end of the string
+		 */
+
 		one.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "1";
+				nextNum = nextNum + "1";
 				text.setText(nextNum);
 			}
 		});
@@ -110,7 +144,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "2";
+				nextNum = nextNum + "2";
 				text.setText(nextNum);
 			}
 		});
@@ -121,7 +155,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "3";
+				nextNum = nextNum + "3";
 				text.setText(nextNum);
 			}
 		});
@@ -132,7 +166,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "4";
+				nextNum = nextNum + "4";
 				text.setText(nextNum);
 			}
 		});
@@ -143,7 +177,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "5";
+				nextNum = nextNum + "5";
 				text.setText(nextNum);
 			}
 		});
@@ -154,7 +188,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "6";
+				nextNum = nextNum + "6";
 				text.setText(nextNum);
 			}
 		});
@@ -165,7 +199,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "7";
+				nextNum = nextNum + "7";
 				text.setText(nextNum);
 			}
 		});
@@ -176,7 +210,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "8";
+				nextNum = nextNum + "8";
 				text.setText(nextNum);
 			}
 		});
@@ -187,7 +221,7 @@ public class SimpleCalculator extends JFrame {
 				if (nextNum.equals("0"))
 					nextNum = "";
 				text.setText("");
-				nextNum += "4";
+				nextNum = nextNum + "4";
 				text.setText(nextNum);
 			}
 		});
@@ -197,12 +231,20 @@ public class SimpleCalculator extends JFrame {
 			public void actionPerformed(ActionEvent event) {
 				if (!nextNum.equals("0")) {
 					text.setText("");
-					nextNum += "0";
+					nextNum = nextNum + "0";
 					text.setText(nextNum);
 				}
 			}
 		});
 
+		// Action handlers for the operational signed buttons
+		/*
+		 * Logic of these buttons: The op variable stores the operation in case
+		 * the user clicks on equal so we know what operation we have to do The
+		 * method calculate is appealed in case we have multiple operations to
+		 * know which one to do,eq. we have 2 + 2 - 1, then the calculator first
+		 * does the 2 + 2 then it subtracts 1 from 4, which gives us 3
+		 */
 		plus.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
@@ -235,15 +277,20 @@ public class SimpleCalculator extends JFrame {
 			}
 		});
 
+		// Action handle for clearing everything up. Basically everything is
+		// reseted here
 		clear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				text.setText("");
 				result = "";
 				nextNum = "";
+				hasDot = false;
+				isStillEmpty = true;
 			}
 		});
 
+		// We perform the operation we have stored in the op variable
 		equal.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
@@ -251,25 +298,56 @@ public class SimpleCalculator extends JFrame {
 			}
 		});
 
+		// Action handler for the dot button
+		/*
+		 * Logic of the button: checks if there is already a dot in the number
+		 * (so if it's a non integer) and if there isn't one, it adds it to end
+		 * of the string, otherwise it does nothing not to do anything wrong
+		 */
 		dot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 				if (!hasDot) {
 					hasDot = true;
-					nextNum += ".";
+					if(nextNum.equals(""))
+						nextNum = "0";
+					nextNum = nextNum + ".";
 					text.setText(nextNum);
 				}
 			}
 		});
 	}
 
+	// Private method used by the Simple calculator to perform the operations
+	// and show on the screen the proper result
 	private void calculate(char operation) {
 		float first, second;
+		// Checking if our result variable is empty
 		if (result.equals("")) {
-			result = "0";
+			if (operation == '/')
+				result = "1";
+			else if(operation == '*')
+				result = "1";
+			else
+				result = "0";
 		}
+		// Conversion from String to Float
 		first = Float.parseFloat(result);
-		second = Float.parseFloat(nextNum);
+		try {
+			second = Float.parseFloat(nextNum);
+		} catch (NumberFormatException e) {
+			if (operation == '+') {
+				second = 0;
+			} else if (operation == '-') {
+				second = 0;
+			} else if (operation == '*') {
+				second = 1;
+			} else {
+				second = 1;
+			}
+		}
+		// We do the operation for it's respective case based on the taken
+		// variable
 		switch (operation) {
 		case '+': {
 			first = first + second;
@@ -278,6 +356,8 @@ public class SimpleCalculator extends JFrame {
 			break;
 		}
 		case '-': {
+			// If condition not to get a negative number as we set result to be
+			// 0 in case it is empty
 			if (!isStillEmpty)
 				first = first - second;
 			else {
@@ -300,14 +380,36 @@ public class SimpleCalculator extends JFrame {
 			break;
 		}
 		case '/': {
-			first = first / second;
-			result = Float.toString(first);
-			text.setText(result);
+			// Checking for absurdities (dividing by 0)
+			if (second == 0) {
+				text.setText("Cannot divide by 0!");
+			} else if (isStillEmpty) {
+				first = second / first;
+				result = Float.toString(first);
+				text.setText(result);
+				isStillEmpty = false;
+			} else {
+				first = first / second;
+				result = Float.toString(first);
+				text.setText(result);
+			}
 			break;
 		}
+		// This case is never reached
 		default:
 			break;
 		}
+		// we reset the nextNum variable so we can have another one stored in it
 		nextNum = "";
+		hasDot = false;
+	}
+
+	// In case of reopening the calculator
+	public void reset() {
+		text.setText("");
+		result = "";
+		nextNum = "";
+		hasDot = false;
+		isStillEmpty = true;
 	}
 }
