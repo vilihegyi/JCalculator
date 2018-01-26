@@ -12,11 +12,12 @@ public class Main {
   public static void main(String[] args) {
 		JMenuBar menuBar;
 		JMenu menu;
-		JMenuItem simpleView, scientificView, about;
+		JMenuItem simpleView, scientificView, programmingView, about;
 
 	  	// Creating objects of type Class to be able to use the methods within them
 		SimpleCalculator simpleCalculator = new SimpleCalculator();
 		ScientificCalculator scientificCalculator = new ScientificCalculator();
+	  	ProgrammingCalculator programmingCalculator = new ProgrammingCalculator();
 
 		// Create the menu bar
 		menuBar = new JMenuBar();
@@ -31,6 +32,9 @@ public class Main {
 		// Math / Scientific
 		scientificView = new JMenuItem("Scientific Calculator");
 		menu.add(scientificView);
+	  	//Programming
+	  	programmingView = new JMenuIteam("Programming Calculator");
+	  	menu.add(programmingView);
 		// Separator
 		menu.addSeparator();
 		// About - separated
@@ -40,16 +44,19 @@ public class Main {
 		simpleCalculator.setVisible(true);
 		simpleCalculator.setJMenuBar(menuBar);
 
-		// Hiding the other view
+		// Hiding the other views
 		scientificCalculator.setVisible(false);
+	  	programmingCalculator.setVisible(false);
 
 		// ActionListeners to the JMenu items
 		simpleView.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 
-				// Closing any previous windows
+				// Closing any previous windows and reseting the fields
 				scientificCalculator.setVisible(false);
+				programmingCalculator.setVisible(false);
+				simpleCalculator.reset();
 
 				// Adding the existing menu to the new frame
 				simpleCalculator.setVisible(true);
@@ -61,15 +68,31 @@ public class Main {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 
-				// Closing any previous windows
+				// Closing any previous windows and reseting the fields
 				simpleCalculator.setVisible(false);
+				programmingCalculator.setVisible(false);
+				scientificCalculator.reset();
 
 				// Adding the existing menu to the new frame
 				scientificCalculator.setVisible(true);
 				scientificCalculator.setJMenuBar(menuBar);
 			}
 		});
-
+	
+	  	programmingView.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent event) {
+				// Closing previous windows and reseting the fields
+				simpleCalculator.setVisible(false);
+				scientificCalculator.setVisible(false);
+				programmingCalculator.reset();
+				
+				// Adding the existing menu to the new frame
+				programmingCalculator.setVisible(true);
+				programmingCalculator.setJMenuBar(menuBar);
+			}
+		});
+	  	
 		about.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
