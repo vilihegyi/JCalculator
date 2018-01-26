@@ -3,5 +3,5 @@
 Calculator written in the Java programming language to perform mathematical calculations. Has a GUI now for a better user experience.
 
 # TODO:
-* add key listeners for a better user experience
-* add a programming calculator to perform operations typical for programmers, such as working with binaries, octals and hexa numbers.
+- [ ] add key listeners for a better user experience
+- [x] add a programming calculator to perform operations typical for programmers, such as working with binaries, octals and hexa numbers. (Thanks to [Zoli](https://github.com/Zoli97) )
