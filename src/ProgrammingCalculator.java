@@ -22,13 +22,15 @@ import javax.swing.border.Border;
 public class ProgrammingCalculator extends JFrame {
 	private static final long serialVersionUID = 128609292020710218L;
 	private JButton zero, one, two, three, four, five, six, seven, eight, nine,
-			plus, minus, multiply, divide, equal, clear, backspace;
+			plus, minus, multiply, divide, equal, clear, blackspace;
 	private JTextArea text;
 	private JPanel contentPanel;
 
-	private String nextNum = "", result = ""; // all the time i have an result with wich
+	private String nextNum = "", result = ""; // all the time i have an result
+												// with wich
 	// i will work . and after that i will
-	// do operations with next number after him
+	// do operations with next number after
+	// him
 	private char operations;
 	private Font tahoma = new Font("Tahoma", Font.ITALIC, 20);
 	private Font font = new Font("Verdana", Font.BOLD, 10);
@@ -37,7 +39,7 @@ public class ProgrammingCalculator extends JFrame {
 	// The size of the elements (buttons)
 	private Dimension dim = new Dimension(75, 25);
 	// Colors
-	private Color clback = new Color(255, 51, 204);
+	private Color clblack = new Color(255, 51, 204);
 	private Color foreground = new Color(255, 255, 255);
 	private boolean stillEmpty = true; // for * and - of type boolean
 
@@ -88,7 +90,7 @@ public class ProgrammingCalculator extends JFrame {
 		divide = new JButton("/");
 		equal = new JButton("=");
 		clear = new JButton("CE");
-		backspace = new JButton("<");
+		blackspace = new JButton("<");
 
 		labelBinary = new JLabel("Binary: ");
 		textBinary = new JTextField(16);
@@ -119,7 +121,7 @@ public class ProgrammingCalculator extends JFrame {
 		multiply.setPreferredSize(dim);
 		divide.setPreferredSize(dim);
 		equal.setPreferredSize(dim);
-		backspace.setPreferredSize(new Dimension(110, 25));
+		blackspace.setPreferredSize(new Dimension(110, 25));
 		clear.setPreferredSize(new Dimension(110, 25));
 
 		// the fonts of the all buttons
@@ -170,7 +172,7 @@ public class ProgrammingCalculator extends JFrame {
 		contentPanel.add(divide);
 		contentPanel.add(equal);
 		contentPanel.add(clear);
-		contentPanel.add(backspace);
+		contentPanel.add(blackspace);
 
 		contentPanel.add(labelBinary);
 		contentPanel.add(textBinary);
@@ -190,23 +192,23 @@ public class ProgrammingCalculator extends JFrame {
 
 		// Design all the buttons
 		// Background for buttons
-		zero.setBackground(clback);
-		one.setBackground(clback);
-		two.setBackground(clback);
-		three.setBackground(clback);
-		four.setBackground(clback);
-		five.setBackground(clback);
-		six.setBackground(clback);
-		seven.setBackground(clback);
-		eight.setBackground(clback);
-		nine.setBackground(clback);
-		plus.setBackground(clback);
-		minus.setBackground(clback);
-		multiply.setBackground(clback);
-		divide.setBackground(clback);
-		clear.setBackground(clback);
-		equal.setBackground(clback);
-		backspace.setBackground(clback);
+		zero.setBackground(clblack);
+		one.setBackground(clblack);
+		two.setBackground(clblack);
+		three.setBackground(clblack);
+		four.setBackground(clblack);
+		five.setBackground(clblack);
+		six.setBackground(clblack);
+		seven.setBackground(clblack);
+		eight.setBackground(clblack);
+		nine.setBackground(clblack);
+		plus.setBackground(clblack);
+		minus.setBackground(clblack);
+		multiply.setBackground(clblack);
+		divide.setBackground(clblack);
+		clear.setBackground(clblack);
+		equal.setBackground(clblack);
+		blackspace.setBackground(clblack);
 
 		// Foreground for buttons
 
@@ -225,14 +227,14 @@ public class ProgrammingCalculator extends JFrame {
 		multiply.setForeground(foreground);
 		divide.setForeground(foreground);
 		clear.setForeground(foreground);
-		backspace.setForeground(foreground);
+		blackspace.setForeground(foreground);
 		equal.setForeground(foreground);
 
 		// actionListener for all buttons
 
 		// delete the numbers
 
-		backspace.addActionListener(new ActionListener() {
+		blackspace.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				backspaceUpdate();
@@ -439,14 +441,13 @@ public class ProgrammingCalculator extends JFrame {
 			firstNumber = Integer.parseInt(result);
 			stillEmpty = false;
 		} catch (NumberFormatException e) {
-			   if (operation == '*') {
-					firstNumber = 1;
-				} else if(operation == '/'){
-					firstNumber = 1;
-				}
-				else 
-					firstNumber = 0;
-				stillEmpty = true;
+			if (operation == '*') {
+				firstNumber = 1;
+			} else if (operation == '/') {
+				firstNumber = 1;
+			} else
+				firstNumber = 0;
+			stillEmpty = true;
 		}
 		// the second number is the
 		// nextNum after of him
@@ -455,10 +456,9 @@ public class ProgrammingCalculator extends JFrame {
 		} catch (NumberFormatException e) {
 			if (operation == '*') {
 				secondNumber = 1;
-			} else if (operation == '/'){
+			} else if (operation == '/') {
 				secondNumber = 1;
-			}
-			else
+			} else
 				secondNumber = 0;
 		}
 
@@ -527,48 +527,54 @@ public class ProgrammingCalculator extends JFrame {
 
 	private void updateDataConvert() {
 		// updating result only would be logical...
-		int binary, octal, hexadecimal;
-		if (result.equals("")) {
-			// if verifying the string is empty so we give 0
-			// as starting value
-			binary = Integer.parseInt(nextNum);
-		}
-		// conversion to int from string
-		else {
-			binary = Integer.parseInt(result);
-		}
-		// conversion into binary text but also setting the jtextfield
-		// update the value
-		textBinary.setText(Integer.toBinaryString(binary));
+		try {
+			int binary, octal, hexadecimal;
 
-		if (result.equals("")) {
-			// if verifying the string is empty so we give 0
-			// as starting value
-			hexadecimal = Integer.parseInt(nextNum);
-		}
-		// conversion to int from string
-		else {
-			hexadecimal = Integer.parseInt(result);
-		}
-		// conversion to hexa text but also setting the jtextfield
-		// update the value
-		textHexa.setText(Integer.toHexString(hexadecimal));
+			if (result.equals("")) {
+				// if verifying the string is empty so we give 0
+				// as starting value
+				binary = Integer.parseInt(nextNum);
+			}
+			// conversion to int from string
+			else {
+				binary = Integer.parseInt(result);
+			}
+			// conversion into binary text but also setting the jtextfield
+			// update the value
+			textBinary.setText(Integer.toBinaryString(binary));
 
-		if (result.equals("")) // if verifying the string is empty so we give 0
-								// as starting value
-		{
-			octal = Integer.parseInt(nextNum);
-			;
-		}
+			if (result.equals("")) {
+				// if verifying the string is empty so we give 0
+				// as starting value
+				hexadecimal = Integer.parseInt(nextNum);
+			}
+			// conversion to int from string
+			else {
+				hexadecimal = Integer.parseInt(result);
+			}
+			// conversion to hexa text but also setting the jtextfield
+			// update the value
+			textHexa.setText(Integer.toHexString(hexadecimal));
 
-		// conversion to int from string
-		else {
-			octal = Integer.parseInt(result);
+			if (result.equals("")) // if verifying the string is empty so we
+									// give 0
+									// as starting value
+			{
+				octal = Integer.parseInt(nextNum);
+			}
 
+			// conversion to int from string
+			else {
+				octal = Integer.parseInt(result);
+			}
+			// conversion to hexa text but also setting the jtextfield
+			// update the value
+			textOctal.setText(Integer.toOctalString(octal));
+		} catch (Exception e) {
+			textBinary.setText("0");
+			textHexa.setText("0");
+			textOctal.setText("0");
 		}
-		// conversion to hexa text but also setting the jtextfield
-		// update the value
-		textOctal.setText(Integer.toOctalString(octal));
 
 	}
 
